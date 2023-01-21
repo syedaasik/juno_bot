@@ -1,0 +1,9 @@
+#!/bin/bash
+white="\e[97m";
+green="\e[32m";
+lgreen="\e[92m";
+red="\e[91m";
+bluebg="\e[44m";
+blackbg="\e[49m";
+megendabg="\e[45m";
+megenda="\e[35m";

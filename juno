@@ -1,0 +1,56 @@
+#!/bin/bash
+#Loading libraries
+source lib/colour;
+source lib/timezone;
+
+#root user check
+if [ $(id -u) -eq 0 ];
+then
+	echo 'Im Juno the bot!!!, I can do some basic sys admin tasks';
+else
+	echo 'You are not root! You should be root to run this script';
+  exit 1;
+fi
+
+#Asking confirmation from user to proceed further
+echo -n "Do you want to proceed further[Y/n]?: ";
+read input;
+if [ $input == 'Y' ]; 
+then
+	echo -n "I'm proceeding further! and ";
+  sleep 1s;
+else
+	echo -e "I'm $red quitting $white now!";
+  exit 1;
+fi
+
+#check if required commands are there
+echo "Checking if required commands are in the system!.........";
+echo "";
+sleep 2s;
+
+commands=("date" "ifconfig" "lsof" "ps" "netstat" "w" "find" "less");
+for com in ${commands[@]};
+do
+	which $com &> /dev/null;
+	if [ $(echo $?) -eq 0 ];
+	then
+		if [ "$1" == "-v" ];
+		then
+			echo -e "$green pass! $megenda $com $white command available";
+    fi
+		sleep 1s;
+	else
+		echo -e "$red $com $white command not available, please install it";
+		echo "I'll not run further until all commands available in this system bye!!";
+		echo "";
+		exit 1;
+	fi
+done
+
+echo -e "$green Pass! $white all required commands are available in $(hostname)";
+sleep 1s;
+echo "";
+
+#operations
+get_time_zone;

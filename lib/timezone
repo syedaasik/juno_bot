@@ -1,0 +1,8 @@
+#!/bin/bash
+#Getting time zone details.
+
+function get_time_zone
+{
+	tzd=$(date "+%Z %:::z");
+	echo -e " Lemme scan the time zone of this system: $red$tzd$white";
+}
