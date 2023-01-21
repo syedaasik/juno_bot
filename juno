@@ -1,7 +1,9 @@
 #!/bin/bash
 #Loading libraries
-source lib/colour;
-source lib/timezone;
+for libraries in $(ls lib/);
+do
+	source lib/$libraries;
+done
 
 #root user check
 if [ $(id -u) -eq 0 ];
