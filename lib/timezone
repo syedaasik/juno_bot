@@ -4,5 +4,5 @@
 function get_time_zone
 {
 	tzd=$(date "+%Z %:::z");
-	echo -e "Checking the time zone of this system: $red$tzd$white";
+	echo -e "Time zone of this system: $green$tzd$white";
 }

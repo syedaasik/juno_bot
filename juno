@@ -59,7 +59,8 @@ then
 }
 fi
 #operations
-for operations in get_time_zone;
+for operations in $(cat func);
 do
+	sleep 1s;
 	$operations;
 done
